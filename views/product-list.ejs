@@ -1,0 +1,46 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    <%- include('includes/navigation.ejs') %>
+        <main>
+            <h1><%=(admin)? 'Admin Products List' : 'Product List'%></h1>
+
+        <% if (products.length) { %>
+            <div class="grid">
+                <% for (let product of products) { %>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= product.title %></h1>
+                        </header>
+                        <div class="card__image">
+                            <h3 class ="product__price">Price :<%= product.price %>$</h3>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLHrN9iCRGEgzYVPuV81fe78tmmRgdfTVhRGvsY78Ohw&usqp=CAU&ec=48665699"
+                                alt="A Book">
+                        </div>
+                        <% if(admin) {%>
+                            <div class="card__actions" class="my-2 text-center d-flex justify-content-center">
+                                <a href="/products/edit/<%=product.id %>" class="btn btn-primary mx-2">Edit</a>
+                               <form action="/products/delete" method="post">
+                                <input type="hidden" name="productid" value="<%=product.id%>">
+                                <button class="btn btn-danger">Delete</button>
+                               </form>
+                            </div>
+
+                        <%} else {%>
+                            <div class="card__actions" class="my-2 text-center d-flex justify-content-center">
+                                <a href="/product/details/<%=product.id %>" class="btn btn-primary mx-2">View Details</a>
+                                <%- include('includes/cartbutton.ejs',{product:product}) %>
+                            </div>
+                        <%}%>
+                        
+                    </article>
+                <% } %>
+            </div>
+        <% } else { %>
+            <h1>No Products Found!</h1>
+        <% } %>
+        </main>
+    
+    
+    
+        <%- include('includes/footer.ejs') %>

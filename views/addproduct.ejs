@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    
+    <%- include('includes/navigation.ejs') %>
+            <main>
+                <h2><%= (edit)? 'Edit Product' : 'Add Product' %></h2>
+                <form class="product-form" method = "POST" action="<% edit ? '/products/edit':'/products/add'%>">
+                    <% if (edit) {%>
+                        <input type="hidden" name="productid" value="<%=product.id %>"/>
+                    <%}%>
+                    <div class="form-control">
+                        <label for="title">Product Title</label>
+                        <input type="text" name ="title" value="<%= edit ? product.title:''%> " />
+                    </div>
+                    <div class="form-control">
+                        <label for="price">Product Price</label>
+                        <input type="number" name ="price" value="<%= edit ? product.price:''%> " />
+                    </div>
+                    <div><button><%= (edit)? 'Edit Product' : 'Add Product'%></button></div>
+                </form>
+            </main>
+          
+    
+            <%- include('includes/footer.ejs') %>

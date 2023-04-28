@@ -1,0 +1,23 @@
+<%- include('includes/head.ejs') %>
+</head>
+<body>
+    <%- include('includes/navigation.ejs') %>
+        <main>
+                    <article class="card product-item">
+                        <header class="card__header">
+                            <h1 class="product__title"><%= product.title %></h1>
+                        </header>
+                        <div class="card__image">
+                            <h3 class ="product__price">Price :<%= product.price %>$</h3>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLHrN9iCRGEgzYVPuV81fe78tmmRgdfTVhRGvsY78Ohw&usqp=CAU&ec=48665699"
+                                alt="A Book">
+                        </div>
+                        <div class="card__actions" class="my-2 text-center">
+                            <%- include('includes/cartbutton.ejs') %>
+                        </div>
+                    </article>
+        </main>
+    
+    
+    
+        <%- include('includes/footer.ejs') %>
