@@ -1,10 +1,12 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const db = require('./utils/database');
 const rootDir = require('./utils/path');
 const adminRoutes = require('./routes/admin');
 const homeRoutes = require('./routes/home');
 const app =express();
+
 
 //setting template engine or integrating ejs with project
 app.set('view engine','ejs');
